@@ -26,8 +26,8 @@ const navLinks: NAVLINK[] = [
     path: "#contact",
   },
   {
-    title: "LINKTREE",
-    path: "", // Linktree is yet to be added 
+    title: "GITHUB",
+    path: "https://github.com/ApoorvBrooklyn", // Linktree is yet to be added 
   },
 ];
 

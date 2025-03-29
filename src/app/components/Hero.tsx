@@ -150,11 +150,10 @@ const Hero: FC = () => {
                 >
                   Download CV
                 </Link>
-                <Link
-                  href="https://x.com/ApoorvBrooklyn"
-                  className="px-8 py-3 rounded-lg bg-transparent border-2 border-pink-500 text-pink-400 font-bold transition-transform duration-300 hover:scale-105 hover:bg-pink-900/30 hover:shadow-lg hover:shadow-pink-500/20"
+                <Link href="https://github.com/ApoorvBrooklyn"
+                className="px-8 py-3 rounded-lg bg-transparent border-2 border-pink-500 text-pink-400 font-bold transition-transform duration-300 hover:scale-105 hover:bg-pink-900/30 hover:shadow-lg hover:shadow-pink-500/20"
                 >
-                  Visit my Twitter
+                Visit My Github
                 </Link>
               </motion.div>
             </div>
