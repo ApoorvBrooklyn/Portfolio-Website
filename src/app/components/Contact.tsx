@@ -84,7 +84,7 @@ const Contact: FC = () => {
               <span className="text-pink-500">&gt; </span>
               TRANSMISSION RECEIVED SUCCESSFULLY
             </p>
-            <p className="text-gray-400 text-sm mt-2 font-mono">Message has been encrypted and sent to Apoorv's neural interface.</p>
+            <p className="text-gray-400 text-sm mt-2 font-mono">Message has been encrypted and sent to Apoorv&apos;s neural interface.</p>
           </div>
         ) : (
           <form className="flex flex-col cyber-form" onSubmit={handleSubmit}>
