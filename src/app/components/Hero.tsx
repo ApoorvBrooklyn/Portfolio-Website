@@ -127,7 +127,7 @@ const Hero: FC = () => {
                 </p>
                 <p className="text-gray-300 text-lg md:text-xl mb-6 max-w-2xl leading-relaxed">
                   As an Engineer I&apos;m passionate about latest technology in field of AI and ML.  
-                  I have previously intered at <span className="text-cyan-400 font-semibold"> Samsung Research Institute, Qualitas Technologies and Spoda AI</span>. I have worked majorly in 
+                  I have previously interned at <span className="text-cyan-400 font-semibold"> Samsung Research Institute, Qualitas Technologies and Spoda AI</span>. I have worked majorly in 
                   <span className="text-pink-400 font-semibold"> Python, C++ and JAVA</span> Vivid learner with great debugging skills. 
                 </p>
               </motion.div>
