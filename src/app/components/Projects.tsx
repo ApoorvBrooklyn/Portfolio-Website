@@ -58,6 +58,16 @@ const projectsData: ProjectData[] = [
     link: "https://www.igi-global.com/chapter/advanced-applications-of-generative-ai-and-natural-language-processing-models/335833",
     tag: ["All", "General"],
   },
+  {
+    id: 6,
+    name: "Multihead-Attention Mechanism",
+    description:
+      "Custom Attention mechanism for the queries containing multiple topics. The mechanism understands the topics and breaks the query to specialized SLM",
+    image: "/proj/Project.png",
+    link: "https://github.com/ApoorvBrooklyn/MultiHead-Attention-Mechanism",
+    tag: ["All", "General", "Core- AI and ML"],
+  },
+  
   // Add projects as reuired
 ];
 
