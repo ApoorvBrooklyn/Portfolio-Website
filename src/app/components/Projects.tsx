@@ -13,8 +13,18 @@ interface ProjectData {
 }
 
 const projectsData: ProjectData[] = [
+
   {
     id: 1,
+    name: "Multihead-Attention Mechanism",
+    description:
+      "Custom Attention mechanism for the queries containing multiple topics. The mechanism understands the topics and breaks the query to specialized SLM",
+    image: "/proj/Project.png",
+    link: "https://github.com/ApoorvBrooklyn/MultiHead-Attention-Mechanism",
+    tag: ["All", "General", "Core- AI and ML"],
+  },
+  {
+    id: 2,
     name: "Credit Risk Modelling",
     description:
       "A comprehensive financial analytics platform built with Streamlit that combines real-time portfolio tracking, technical analysis, fraud detection, and risk management capabilities.",
@@ -23,7 +33,7 @@ const projectsData: ProjectData[] = [
     tag: ["All", "Finance"],
   },
   {
-    id: 2,
+    id: 3,
     name: "Transformer - Implementation",
     description:
       "Implementation of entire Transformer Architecture from scratch in Pytorch",
@@ -32,7 +42,7 @@ const projectsData: ProjectData[] = [
     tag: ["All", "Core- AI and ML"],
   },
   {
-    id: 3,
+    id: 4,
     name: "Neural Net Implementation",
     description:
       "Complete Implementation of Neural Network from Scratch without use of Pytorch. Only used Numpy",
@@ -41,7 +51,7 @@ const projectsData: ProjectData[] = [
     tag: ["All", "Core- AI and ML"],
   },
   {
-    id: 4,
+    id: 5,
     name: "Nano - gpt",
     description:
       " Implementation of Nano-GPT from Andrej Karapathy ",
@@ -50,7 +60,7 @@ const projectsData: ProjectData[] = [
     tag: ["All", "Core- AI and ML"],
   },
   {
-    id: 5,
+    id: 6,
     name: "Chapter Publication - IGI Global",
     description:
       "Wrote a chapter for IGI global publication",
@@ -58,15 +68,7 @@ const projectsData: ProjectData[] = [
     link: "https://www.igi-global.com/chapter/advanced-applications-of-generative-ai-and-natural-language-processing-models/335833",
     tag: ["All", "General"],
   },
-  {
-    id: 6,
-    name: "Multihead-Attention Mechanism",
-    description:
-      "Custom Attention mechanism for the queries containing multiple topics. The mechanism understands the topics and breaks the query to specialized SLM",
-    image: "/proj/Project.png",
-    link: "https://github.com/ApoorvBrooklyn/MultiHead-Attention-Mechanism",
-    tag: ["All", "General", "Core- AI and ML"],
-  },
+  
   
   // Add projects as reuired
 ];
