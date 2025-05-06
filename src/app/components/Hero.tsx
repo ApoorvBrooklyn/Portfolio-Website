@@ -126,7 +126,8 @@ const Hero: FC = () => {
                   Vice-President @ Coding Club RVCE, Junior @ Dept of ECE, RVCE.
                 </p>
                 <p className="text-gray-300 text-lg md:text-xl mb-6 max-w-2xl leading-relaxed">
-                  As an Engineer I&apos;m passionate about latest technology in field of AI and ML.  
+                  As an Engineer I&apos;m passionate about latest technology in field of AI and ML.
+                  Upcoming Intern at IIIT Hyderabad  and currently working on a project in implementing Gen AI in RISC V architecture.
                   I have previously interned at <span className="text-cyan-400 font-semibold"> Samsung Research Institute, Qualitas Technologies and Spoda AI</span>. I have worked majorly in 
                   <span className="text-pink-400 font-semibold"> Python, C++ and JAVA</span> Vivid learner with great debugging skills. 
                 </p>
