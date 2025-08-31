@@ -9,57 +9,64 @@ interface TabData {
 
 const TAB_DATA: TabData[] = [
   {
-    title: "SKILLS",
+    title: "Skills",
     id: "skills",
     content: (
-      <ul className="space-y-2 text-cyan-300 text-lg lg:text-xl font-mono">
+      <ul className="space-y-3">
         {[
-          "Python - Pytorch",
-          "C++",
-          "Langchain",
-          "SQL"
-        ].map((skill, index) => (
-          <li key={index} className="flex items-center">
-            <span className="text-pink-500 mr-2">&gt;</span>
-            {skill}
+          { skill: "Python & PyTorch", level: "Expert" },
+          { skill: "Neural Architecture Design", level: "Advanced" },
+          { skill: "LangChain & LLM Integration", level: "Advanced" },
+          { skill: "C++ for High Performance ML", level: "Intermediate" },
+          { skill: "TensorFlow & JAX", level: "Intermediate" },
+          { skill: "MLOps & Model Deployment", level: "Advanced" }
+        ].map((item, index) => (
+          <li key={index} className="flex items-center justify-between">
+            <span className="text-gray-700">{item.skill}</span>
+            <span className="text-primary-600 text-sm font-medium bg-primary-50 px-2 py-1 rounded">
+              {item.level}
+            </span>
           </li>
         ))}
       </ul>
     ),
   },
   {
-    title: "EDUCATION",
+    title: "Education",
     id: "education",
     content: (
-      <ul className="space-y-2 text-cyan-300 text-lg lg:text-xl font-mono">
+      <ul className="space-y-4">
         {[
-          "Undergraduate in Electronics and Communincation",
-          "GPA 8.31",
-          "ML Development",
-          "Generative AI",
-          "Core LLM Architecutre"
+          { item: "Electronics & Communication Engineering", meta: "GPA: 8.31" },
+          { item: "Deep Learning Specialization", meta: "Neural Networks" },
+          { item: "Generative AI Architecture", meta: "Transformers & LLMs" },
+          { item: "FinTech ML Applications", meta: "Option Pricing Models" },
+          { item: "MLOps & Model Optimization", meta: "Production AI Systems" }
         ].map((item, index) => (
-          <li key={index} className="flex items-center">
-            <span className="text-pink-500 mr-2">&gt;</span>
-            {item}
+          <li key={index} className="border-l-2 border-primary-200 pl-4">
+            <div className="font-medium text-gray-900">{item.item}</div>
+            <div className="text-gray-600 text-sm">{item.meta}</div>
           </li>
         ))}
       </ul>
     ),
   },
   {
-    title: "CERTIFICATIONS",
+    title: "Certifications",
     id: "certifications",
     content: (
-      <ul className="space-y-2 text-cyan-300 text-lg lg:text-xl font-mono">
+      <ul className="space-y-4">
         {[
-          "Datascience for Engineers, NPTEL",
-          "Foundations of Machine Learning, Coursera",
-          "Infosys Springboard"
-        ].map((cert, index) => (
-          <li key={index} className="flex items-center">
-            <span className="text-pink-500 mr-2">&gt;</span>
-            {cert}
+          { cert: "Data Science for Engineers", org: "NPTEL", focus: "Statistical ML" },
+          { cert: "Machine Learning Foundations", org: "Coursera", focus: "Core Algorithms" },
+          { cert: "AI Development Track", org: "Infosys Springboard", focus: "Enterprise AI" },
+          { cert: "PyTorch Deep Learning", org: "Self-Study", focus: "Neural Networks" }
+        ].map((item, index) => (
+          <li key={index} className="border-l-2 border-success-200 pl-4">
+            <div className="font-medium text-gray-900">{item.cert}</div>
+            <div className="text-gray-600 text-sm">
+              {item.org} • Focus: {item.focus}
+            </div>
           </li>
         ))}
       </ul>
@@ -75,105 +82,66 @@ export default function About() {
   };
   
   return (
-    <section className="bg-black text-white relative" id="about">
-      {/* Cyberpunk grid background */}
-      <div className="absolute inset-0 z-0 overflow-hidden opacity-10">
-        <div className="grid-background w-full h-full"></div>
-      </div>
-      
-      <div className="relative z-10 md:grid md:grid-cols-2 gap-8 items-center py-16 px-4 xl:gap-16 xl:px-16">
-        <div className="relative group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-500 to-cyan-500 rounded-3xl opacity-75 blur-sm group-hover:opacity-100 transition duration-1000"></div>
-          <div className="relative">
-            <Image
-              src="/Images/Image.jpg"
-              alt="Your Name"
-              width={500}
-              height={500}
-              className="rounded-3xl border border-cyan-800"
-            />
-            <div className="absolute top-0 left-0 w-full h-full rounded-3xl bg-gradient-to-t from-black/70 to-transparent opacity-60"></div>
-            <div className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm px-2 py-1 rounded text-xs font-mono text-cyan-400 border border-cyan-800 animate-pulse">SYS.32//CORE</div>
-          </div>
-        </div>
-        
-        <div className="mt-8 md:mt-0 text-left flex flex-col h-full relative">
-          <div className="absolute -left-6 top-0 bottom-0 w-1 bg-gradient-to-b from-pink-500 to-cyan-500"></div>
-          
-          <h2 className="text-4xl font-bold mb-6 font-mono tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500 glitch-heading">&lt;ABOUT_ME&gt;</h2>
-          
-          <p className="text-lg text-cyan-100 font-light leading-relaxed border-l border-cyan-800 pl-4">
-            Dedicated Electronics and Communication Engineering student with a strong foundation in 
-            <span className="text-pink-500 font-bold"> Artificial Intelligence</span> and
-            <span className="text-cyan-400 font-bold"> Machine Learning</span> at core. Deep Interest in Finance. 
-            Working on Various projects such as 
-            <span className="text-pink-500 font-bold"> Option Pricing Model</span> for the
-            Financial Markets. Have worked with foundational models and writing Architectures from Scratch.
+    <section className="bg-gray-50 py-16" id="about">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="section-title">About Me</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Passionate AI Engineer with expertise in neural networks and machine learning
           </p>
-          
-          <div className="flex flex-row justify-start mt-8 border-b border-cyan-900 pb-2">
-            {TAB_DATA.map((data) => (
-              <button
-                key={data.id}
-                onClick={() => handleTabChange(data.id)}
-                className={`mr-6 font-mono text-lg relative ${
-                  tab === data.id 
-                    ? "text-cyan-400 after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-full after:h-0.5 after:bg-pink-500" 
-                    : "text-gray-500 hover:text-gray-300"
-                }`}
-              >
-                {data.title}
-                {tab === data.id && (
-                  <span className="absolute -left-4 text-pink-500">&gt;</span>
-                )}
-              </button>
-            ))}
+        </div>
+        
+        <div className="md:grid md:grid-cols-2 gap-12 items-center">
+          <div className="relative mb-8 md:mb-0">
+            <div className="relative w-full max-w-md mx-auto">
+              <Image
+                src="/Images/Image.jpg"
+                alt="Apoorv - AI/ML Engineer"
+                width={400}
+                height={400}
+                className="rounded-lg shadow-lg w-full h-auto"
+              />
+            </div>
           </div>
           
-          <div className="mt-8 border border-cyan-900 bg-black/50 backdrop-blur-sm rounded-md p-4 relative">
-            <div className="absolute top-0 right-0 bg-cyan-900/70 text-cyan-400 text-xs px-2 py-0.5 font-mono rounded-bl">{tab}.exe</div>
-            {TAB_DATA.find((t) => t.id === tab).content}
+          <div className="space-y-6">
+            <div className="prose prose-lg">
+              <p className="text-gray-700 leading-relaxed">
+                Dedicated Electronics and Communication Engineering student specializing in 
+                <span className="font-semibold text-primary-600"> Artificial Intelligence</span> and
+                <span className="font-semibold text-primary-600"> Machine Learning</span> architectures. 
+              </p>
+              <p className="text-gray-700 leading-relaxed">
+                Deep expertise in FinTech applications, currently developing 
+                <span className="font-semibold text-gray-900"> Option Pricing Models</span> using neural networks for
+                financial markets. Experienced in building foundational models and implementing custom architectures from scratch.
+              </p>
+            </div>
+            
+            <div className="border-b border-gray-200">
+              <nav className="flex space-x-8">
+                {TAB_DATA.map((data) => (
+                  <button
+                    key={data.id}
+                    onClick={() => handleTabChange(data.id)}
+                    className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200 ${
+                      tab === data.id 
+                        ? "border-primary-500 text-primary-600" 
+                        : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                    }`}
+                  >
+                    {data.title}
+                  </button>
+                ))}
+              </nav>
+            </div>
+            
+            <div className="card p-6">
+              {TAB_DATA.find((t) => t.id === tab).content}
+            </div>
           </div>
         </div>
       </div>
-      
-      <style jsx>{`
-        .grid-background {
-          background-image: linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
-          background-size: 20px 20px;
-          perspective: 500px;
-          transform: rotateX(45deg);
-          transform-origin: top;
-        }
-        
-        .glitch-heading {
-          position: relative;
-          text-shadow: 0.05em 0 0 rgba(255,0,128,0.75), -0.05em -0.025em 0 rgba(0,255,255,0.75);
-          animation: glitch 2s infinite;
-        }
-        
-        @keyframes glitch {
-          0% {
-            text-shadow: 0.05em 0 0 rgba(255,0,128,0.75), -0.05em -0.025em 0 rgba(0,255,255,0.75);
-          }
-          15% {
-            text-shadow: -0.05em -0.025em 0 rgba(255,0,128,0.75), 0.025em 0.025em 0 rgba(0,255,255,0.75);
-          }
-          49% {
-            text-shadow: -0.05em -0.025em 0 rgba(255,0,128,0.75), 0.025em 0.025em 0 rgba(0,255,255,0.75);
-          }
-          50% {
-            text-shadow: 0.05em 0.05em 0 rgba(255,0,128,0.75), 0.05em 0 0 rgba(0,255,255,0.75);
-          }
-          99% {
-            text-shadow: 0.05em 0.05em 0 rgba(255,0,128,0.75), 0.05em 0 0 rgba(0,255,255,0.75);
-          }
-          100% {
-            text-shadow: -0.05em 0 0 rgba(255,0,128,0.75), -0.025em -0.025em 0 rgba(0,255,255,0.75);
-          }
-        }
-      `}</style>
     </section>
   );
 }

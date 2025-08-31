@@ -10,24 +10,24 @@ interface NAVLINK {
 
 const navLinks: NAVLINK[] = [
   {
-    title: "HOME",
+    title: "Home",
     path: "#",
   },
   {
-    title: "ABOUT",
+    title: "About",
     path: "#about",
   },
   {
-    title: "PROJECTS",
+    title: "Projects",
     path: "#projects",
   },
   {
-    title: "CONTACT",
+    title: "Contact",
     path: "#contact",
   },
   {
-    title: "GITHUB",
-    path: "https://github.com/ApoorvBrooklyn", // Linktree is yet to be added 
+    title: "GitHub",
+    path: "https://github.com/ApoorvBrooklyn",
   },
 ];
 
@@ -35,56 +35,59 @@ const Navbar: FC = () => {
   const [navbarOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-20 bg-black shadow-lg border-b-2 border-cyan-500">
-      <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
+    <nav className="fixed top-0 z-50 w-full bg-white/90 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+      <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-3">
         <Link
           href={"/"}
-          className="text-2xl md:text-5xl font-bold relative"
+          className="text-xl md:text-2xl font-bold text-gray-900 hover:text-primary-600 transition-colors duration-200"
         >
-          <span className="text-cyan-400 font-mono tracking-wider glitch-text">APOORV</span>
-          <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-pink-500"></span>
+          Apoorv
         </Link>
+        
         <div className="mobile-menu block md:hidden">
           {!navbarOpen ? (
             <button
               onClick={() => setIsOpen(true)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-cyan-400 hover:text-pink-500 hover:border hover:border-cyan-400 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500"
             >
-              <Bars3Icon className="h-5 w-5" />
+              <Bars3Icon className="h-6 w-6" />
             </button>
           ) : (
             <button
               onClick={() => setIsOpen(false)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-cyan-400 hover:text-pink-500 hover:border hover:border-cyan-400 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500"
             >
-              <XMarkIcon className="h-5 w-5" />
+              <XMarkIcon className="h-6 w-6" />
             </button>
           )}
         </div>
+        
         <div className="menu hidden md:block md:w-auto" id="navbar">
           <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
             {navLinks.map((link, index) => (
               <li key={index}>
                 <a
                   href={link.path}
-                  className="text-cyan-400 font-mono hover:text-pink-500 px-3 py-2 block relative overflow-hidden group transition duration-300"
+                  className="text-gray-600 hover:text-primary-600 px-3 py-2 block font-medium transition-colors duration-200 relative group"
                 >
-                  <span className="relative z-10">{link.title}</span>
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-500 transition-all duration-300 group-hover:w-full"></span>
+                  {link.title}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
                 </a>
               </li>
             ))}
           </ul>
         </div>
       </div>
+      
       {navbarOpen && (
-        <div className="block md:hidden border-t border-cyan-800 bg-black/90 backdrop-blur-sm">
+        <div className="block md:hidden border-t border-gray-200 bg-white/95 backdrop-blur-sm">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link, index) => (
               <a
                 key={index}
                 href={link.path}
-                className="text-cyan-400 font-mono block px-3 py-2 hover:text-pink-500 hover:bg-black/50 rounded text-base"
+                className="text-gray-600 hover:text-primary-600 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
+                onClick={() => setIsOpen(false)}
               >
                 {link.title}
               </a>
@@ -92,35 +95,6 @@ const Navbar: FC = () => {
           </div>
         </div>
       )}
-      
-      <style jsx global>{`
-        .glitch-text {
-          position: relative;
-          text-shadow: 0.05em 0 0 rgba(255,0,128,0.75), -0.05em -0.025em 0 rgba(0,255,255,0.75);
-          animation: glitch 1s infinite;
-        }
-        
-        @keyframes glitch {
-          0% {
-            text-shadow: 0.05em 0 0 rgba(255,0,128,0.75), -0.05em -0.025em 0 rgba(0,255,255,0.75);
-          }
-          15% {
-            text-shadow: -0.05em -0.025em 0 rgba(255,0,128,0.75), 0.025em 0.025em 0 rgba(0,255,255,0.75);
-          }
-          49% {
-            text-shadow: -0.05em -0.025em 0 rgba(255,0,128,0.75), 0.025em 0.025em 0 rgba(0,255,255,0.75);
-          }
-          50% {
-            text-shadow: 0.05em 0.05em 0 rgba(255,0,128,0.75), 0.05em 0 0 rgba(0,255,255,0.75);
-          }
-          99% {
-            text-shadow: 0.05em 0.05em 0 rgba(255,0,128,0.75), 0.05em 0 0 rgba(0,255,255,0.75);
-          }
-          100% {
-            text-shadow: -0.05em 0 0 rgba(255,0,128,0.75), -0.025em -0.025em 0 rgba(0,255,255,0.75);
-          }
-        }
-      `}</style>
     </nav>
   );
 };

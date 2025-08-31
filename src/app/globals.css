@@ -3,25 +3,152 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 51, 51, 51;
+  --background-rgb: 255, 255, 255;
+  --accent-primary: 59, 130, 246;
+  --accent-secondary: 107, 114, 128;
+  --border-color: 229, 231, 235;
+  --text-muted: 107, 114, 128;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(var(--background-rgb));
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Clean Component Styles */
+.card {
+  background: white;
+  border: 1px solid rgb(var(--border-color));
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background-color: rgb(var(--accent-primary));
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: rgb(29, 78, 216);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: rgb(var(--accent-primary));
+  padding: 0.75rem 1.5rem;
+  border: 1px solid rgb(var(--accent-primary));
+  border-radius: 6px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: rgb(var(--accent-primary));
+  color: white;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: rgb(var(--foreground-rgb));
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.text-muted {
+  color: rgb(var(--text-muted));
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(249, 250, 251);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--accent-secondary));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--accent-primary));
+}
+
+/* Simple animations for interactivity */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Focus styles for accessibility */
+.focus-visible {
+  outline: 2px solid rgb(var(--accent-primary));
+  outline-offset: 2px;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.875rem;
+  }
+  
+  body {
+    font-size: 0.9rem;
+  }
 }

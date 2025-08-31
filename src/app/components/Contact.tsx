@@ -7,255 +7,205 @@ import emailjs from "emailjs-com";
 
 const Contact: FC = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    emailjs
-      .sendForm("service_ucgutfg", "template_esbcm5o", e.target, "r5Ku7DzQjzCGO0CEk")
-      .then((result) => {
-        console.log("Email sent successfully!", result.status, result.text);
-        setEmailSubmitted(true);
-        setIsModalVisible(true);
-      })
-      .catch((error) => {
-        console.error("An error occurred while sending the email:", error.text);
-      });
+    setIsLoading(true);
+    
+    try {
+      const result = await emailjs.sendForm(
+        "service_ucgutfg", 
+        "template_esbcm5o", 
+        e.target, 
+        "r5Ku7DzQjzCGO0CEk"
+      );
+      console.log("Email sent successfully!", result.status, result.text);
+      setEmailSubmitted(true);
+    } catch (error) {
+      console.error("An error occurred while sending the email:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
   
   return (
-    <section
-      id="contact"
-      className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-8 relative bg-black"
-    >
-      {/* Cyberpunk grid background */}
-      <div className="absolute inset-0 z-0 overflow-hidden opacity-5">
-        <div className="grid-background w-full h-full"></div>
-      </div>
-      
-      {/* Neon glow effect */}
-      <div className="hidden md:block bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-500 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
-      <div className="hidden md:block bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-pink-500 to-transparent rounded-full h-64 w-64 z-0 blur-lg absolute top-1/4 right-0 transform translate-x-1/2 -translate-1/2"></div>
-      
-      <div className="z-10 relative px-4">
-        <div className="absolute -left-2 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-500 to-pink-500"></div>
-        <h5 className="text-3xl font-bold font-mono mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500 glitch-heading">&lt;CONNECT_WITH_ME/&gt;</h5>
-        
-        <div className="terminal-window mb-8 border border-cyan-800 bg-black/70 backdrop-blur-sm p-4 rounded">
-          <div className="terminal-header flex items-center mb-2">
-            <div className="w-3 h-3 rounded-full bg-pink-500 mr-2"></div>
-            <div className="w-3 h-3 rounded-full bg-cyan-500 mr-2"></div>
-            <div className="text-xs text-cyan-400 font-mono">terminal@apoorv:~$</div>
-          </div>
-          <p className="text-cyan-300 font-mono text-sm md:text-base typed-text">
-            <span className="text-pink-500">$ </span>
-            Always Looking for new opportunities !!!! 
+    <section id="contact" className="bg-gray-50 py-16">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="section-title">Get In Touch</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            I'm always open to discussing new opportunities, collaborations, 
+            or interesting AI/ML projects. Let's connect!
           </p>
         </div>
         
-        <div className="socials flex flex-row gap-6 mt-8">
-          <Link href="https://www.github.com/ApoorvBrooklyn/" className="group relative">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-500 to-cyan-500 rounded-lg opacity-75 group-hover:opacity-100 blur-sm transition duration-300"></div>
-            <div className="relative bg-black p-3 rounded-lg">
-              <FontAwesomeIcon
-                icon={faGithub}
-                className="h-8 w-8 text-cyan-400 group-hover:text-pink-400 transition-colors duration-300"
-              />
-            </div>
-          </Link>
-          <Link href="https://www.linkedin.com/in/apoorv-sadhale-4406061a7/" className="group relative">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-pink-500 rounded-lg opacity-75 group-hover:opacity-100 blur-sm transition duration-300"></div>
-            <div className="relative bg-black p-3 rounded-lg">
-              <FontAwesomeIcon
-                icon={faLinkedin}
-                className="h-8 w-8 text-cyan-400 group-hover:text-pink-400 transition-colors duration-300"
-              />
-            </div>
-          </Link>
-        </div>
-      </div>
-      
-      <div className="z-10 px-4">
-        {emailSubmitted ? (
-          <div className="success-message border-2 border-cyan-500 bg-black/70 backdrop-blur-sm p-6 rounded-lg relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-pink-500"></div>
-            <div className="absolute top-0 right-0 px-2 py-1 bg-cyan-900/70 text-cyan-400 text-xs font-mono rounded-bl">status: 200_OK</div>
-            <p className="text-cyan-400 text-xl mt-2 font-mono glitch-small">
-              <span className="text-pink-500">&gt; </span>
-              TRANSMISSION RECEIVED SUCCESSFULLY
-            </p>
-            <p className="text-gray-400 text-sm mt-2 font-mono">Message has been encrypted and sent to Apoorv&apos;s neural interface.</p>
-          </div>
-        ) : (
-          <form className="flex flex-col cyber-form" onSubmit={handleSubmit}>
-            <div className="mb-6 relative">
-              <label
-                htmlFor="email"
-                className="text-cyan-400 block mb-2 text-lg font-mono"
-              >
-                <span className="text-pink-500">&gt; </span>EMAIL_ADDRESS
-              </label>
-              <div className="input-container relative">
-                <input
-                  name="email"
-                  type="email"
-                  id="email"
-                  required
-                  className="bg-black/50 border border-cyan-800 focus:border-pink-500 placeholder-gray-600 text-cyan-100 text-lg rounded-none block w-full p-3 font-mono transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-pink-500"
-                  placeholder="your@neuralink.net"
-                />
-                <div className="absolute top-0 right-0 px-2 py-1 bg-cyan-900/70 text-cyan-400 text-xs font-mono">required</div>
+        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          {/* Contact Info */}
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                Let's Connect
+              </h3>
+              <p className="text-gray-600 leading-relaxed mb-6">
+                Whether you're looking for AI/ML expertise, have an exciting project proposal, 
+                or just want to chat about neural networks and machine learning, I'd love to hear from you.
+              </p>
+              
+              <div className="space-y-4">
+                <div className="flex items-center text-gray-700">
+                  <span className="font-medium">Current Status:</span>
+                  <span className="ml-2 text-primary-600">Upcoming Intern @ IIIT Hyderabad</span>
+                </div>
+                <div className="flex items-center text-gray-700">
+                  <span className="font-medium">Focus Areas:</span>
+                  <span className="ml-2">AI, ML, FinTech, Neural Networks</span>
+                </div>
+                <div className="flex items-center text-gray-700">
+                  <span className="font-medium">Response Time:</span>
+                  <span className="ml-2">Usually within 24 hours</span>
+                </div>
               </div>
             </div>
             
-            <div className="mb-6 relative">
-              <label
-                htmlFor="name"
-                className="text-cyan-400 block text-lg mb-2 font-mono"
+            <div className="flex gap-6">
+              <Link 
+                href="https://www.github.com/ApoorvBrooklyn/" 
+                className="group inline-flex items-center justify-center w-12 h-12 bg-white border border-gray-200 rounded-lg hover:border-primary-300 hover:bg-primary-50 transition-all duration-200"
               >
-                <span className="text-pink-500">&gt; </span>USER_ID
-              </label>
-              <input
-                name="name"
-                type="text"
-                id="name"
-                required
-                className="bg-black/50 border border-cyan-800 focus:border-pink-500 placeholder-gray-600 text-cyan-100 text-lg rounded-none block w-full p-3 font-mono transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-pink-500"
-                placeholder="Enter your identifier"
-              />
-            </div>
-            
-            <div className="mb-6 relative">
-              <label
-                htmlFor="subject"
-                className="text-cyan-400 block text-lg mb-2 font-mono"
+                <FontAwesomeIcon
+                  icon={faGithub}
+                  className="h-6 w-6 text-gray-600 group-hover:text-primary-600 transition-colors duration-200"
+                />
+              </Link>
+              <Link 
+                href="https://www.linkedin.com/in/apoorv-sadhale-4406061a7/" 
+                className="group inline-flex items-center justify-center w-12 h-12 bg-white border border-gray-200 rounded-lg hover:border-primary-300 hover:bg-primary-50 transition-all duration-200"
               >
-                <span className="text-pink-500">&gt; </span>TRANSMISSION_SUBJECT
-              </label>
-              <input
-                name="subject"
-                type="text"
-                id="subject"
-                required
-                className="bg-black/50 border border-cyan-800 focus:border-pink-500 placeholder-gray-600 text-cyan-100 text-lg rounded-none block w-full p-3 font-mono transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-pink-500"
-                placeholder="Enter transmission subject"
-              />
-            </div>
-            
-            <div className="mb-6 relative">
-              <label
-                htmlFor="message"
-                className="text-cyan-400 block text-lg mb-2 font-mono"
-              >
-                <span className="text-pink-500">&gt; </span>MESSAGE_CONTENT
-              </label>
-              <textarea
-                name="message"
-                id="message"
-                required
-                rows={5}
-                className="bg-black/50 border border-cyan-800 focus:border-pink-500 placeholder-gray-600 text-cyan-100 text-lg rounded-none block w-full p-3 font-mono transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-pink-500"
-                placeholder="Enter your transmission data here..."
-              ></textarea>
-            </div>
-            
-            <button
-              type="submit"
-              className="relative group overflow-hidden bg-black border-2 border-cyan-500 text-cyan-400 font-mono py-3 px-6 uppercase tracking-wider"
-            >
-              <span className="relative z-10 group-hover:text-black transition-colors duration-300">
-                TRANSMIT_MESSAGE
-              </span>
-              <span className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-pink-500 z-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
-            </button>
-          </form>
-        )}
-        
-        {isModalVisible && (
-          <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/80 backdrop-blur-sm">
-            <div className="modal-content bg-black border-2 border-cyan-500 p-6 rounded-none max-w-md w-full relative">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-pink-500"></div>
-              <div className="absolute top-0 right-0 px-2 py-1 bg-cyan-900/70 text-cyan-400 text-xs font-mono">system.notification</div>
-              
-              <p className="text-cyan-400 text-xl my-4 font-mono">
-                <span className="text-pink-500">&gt; </span>
-                Transmission complete. Data packet sent successfully.
-              </p>
-              
-              <button
-                className="relative group overflow-hidden bg-black border-2 border-pink-500 text-pink-400 font-mono py-2 px-4 uppercase tracking-wider mt-4 w-full"
-                onClick={() => setIsModalVisible(false)}
-              >
-                <span className="relative z-10 group-hover:text-black transition-colors duration-300">
-                  CLOSE_TERMINAL
-                </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-pink-500 to-cyan-500 z-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
-              </button>
+                <FontAwesomeIcon
+                  icon={faLinkedin}
+                  className="h-6 w-6 text-gray-600 group-hover:text-primary-600 transition-colors duration-200"
+                />
+              </Link>
             </div>
           </div>
-        )}
+          
+          {/* Contact Form */}
+          <div>
+            {emailSubmitted ? (
+              <div className="card p-8 text-center">
+                <div className="w-16 h-16 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-success-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Message Sent Successfully!
+                </h3>
+                <p className="text-gray-600">
+                  Thank you for reaching out. I'll get back to you as soon as possible.
+                </p>
+                <button
+                  onClick={() => setEmailSubmitted(false)}
+                  className="mt-4 btn-secondary"
+                >
+                  Send Another Message
+                </button>
+              </div>
+            ) : (
+              <form className="card p-8" onSubmit={handleSubmit}>
+                <div className="space-y-6">
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                      Email Address
+                    </label>
+                    <input
+                      name="email"
+                      type="email"
+                      id="email"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                      Full Name
+                    </label>
+                    <input
+                      name="name"
+                      type="text"
+                      id="name"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label
+                      htmlFor="subject"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                      Subject
+                    </label>
+                    <input
+                      name="subject"
+                      type="text"
+                      id="subject"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200"
+                      placeholder="What's this about?"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      name="message"
+                      id="message"
+                      required
+                      rows={5}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200 resize-none"
+                      placeholder="Tell me about your project or how we can collaborate..."
+                    ></textarea>
+                  </div>
+                  
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className={`w-full btn-primary ${isLoading ? 'opacity-75 cursor-not-allowed' : ''}`}
+                  >
+                    {isLoading ? (
+                      <span className="flex items-center justify-center">
+                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Sending...
+                      </span>
+                    ) : (
+                      'Send Message'
+                    )}
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
       </div>
-      
-      <style jsx>{`
-        .grid-background {
-          background-image: linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
-          background-size: 20px 20px;
-          perspective: 500px;
-          transform: rotateX(45deg);
-          transform-origin: top;
-        }
-        
-        .glitch-heading {
-          position: relative;
-          text-shadow: 0.05em 0 0 rgba(255,0,128,0.75), -0.05em -0.025em 0 rgba(0,255,255,0.75);
-          animation: glitch 2s infinite;
-        }
-        
-        .glitch-small {
-          position: relative;
-          text-shadow: 0.03em 0 0 rgba(255,0,128,0.75), -0.03em -0.015em 0 rgba(0,255,255,0.75);
-          animation: glitch 3s infinite;
-        }
-        
-        @keyframes glitch {
-          0% {
-            text-shadow: 0.05em 0 0 rgba(255,0,128,0.75), -0.05em -0.025em 0 rgba(0,255,255,0.75);
-          }
-          15% {
-            text-shadow: -0.05em -0.025em 0 rgba(255,0,128,0.75), 0.025em 0.025em 0 rgba(0,255,255,0.75);
-          }
-          49% {
-            text-shadow: -0.05em -0.025em 0 rgba(255,0,128,0.75), 0.025em 0.025em 0 rgba(0,255,255,0.75);
-          }
-          50% {
-            text-shadow: 0.05em 0.05em 0 rgba(255,0,128,0.75), 0.05em 0 0 rgba(0,255,255,0.75);
-          }
-          99% {
-            text-shadow: 0.05em 0.05em 0 rgba(255,0,128,0.75), 0.05em 0 0 rgba(0,255,255,0.75);
-          }
-          100% {
-            text-shadow: -0.05em 0 0 rgba(255,0,128,0.75), -0.025em -0.025em 0 rgba(0,255,255,0.75);
-          }
-        }
-        
-        .typed-text {
-          overflow: hidden;
-          border-right: 0.15em solid #EC4899;
-          white-space: nowrap;
-          animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-        }
-        
-        @keyframes typing {
-          from { width: 0 }
-          to { width: 100% }
-        }
-        
-        @keyframes blink-caret {
-          from, to { border-color: transparent }
-          50% { border-color: #EC4899 }
-        }
-      `}</style>
     </section>
   );
 };
