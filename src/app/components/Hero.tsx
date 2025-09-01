@@ -13,7 +13,7 @@ const Hero: FC = () => {
           <div className="space-y-6 fade-in-up">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Hi, I'm{" "}
+                Hi, I&apos;m{" "}
                 <span className="text-primary-600">Apoorv</span>
               </h1>
               

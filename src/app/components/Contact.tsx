@@ -35,8 +35,8 @@ const Contact: FC = () => {
         <div className="text-center mb-12">
           <h2 className="section-title">Get In Touch</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities, collaborations, 
-            or interesting AI/ML projects. Let's connect!
+            I&apos;m always open to discussing new opportunities, collaborations, 
+            or interesting AI/ML projects. Let&apos;s connect!
           </p>
         </div>
         
@@ -45,11 +45,11 @@ const Contact: FC = () => {
           <div className="space-y-8">
             <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Let's Connect
+                Let&apos;s Connect
               </h3>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Whether you're looking for AI/ML expertise, have an exciting project proposal, 
-                or just want to chat about neural networks and machine learning, I'd love to hear from you.
+                Whether you&apos;re looking for AI/ML expertise, have an exciting project proposal, 
+                or just want to chat about neural networks and machine learning, I&apos;d love to hear from you.
               </p>
               
               <div className="space-y-4">
@@ -103,7 +103,7 @@ const Contact: FC = () => {
                   Message Sent Successfully!
                 </h3>
                 <p className="text-gray-600">
-                  Thank you for reaching out. I'll get back to you as soon as possible.
+                  Thank you for reaching out. I&apos;ll get back to you as soon as possible.
                 </p>
                 <button
                   onClick={() => setEmailSubmitted(false)}
