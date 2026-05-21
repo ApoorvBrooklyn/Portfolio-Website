@@ -1,0 +1,44 @@
+{
+  "bio": [
+    "I'm an Electronics & Communication Engineering student at RVCE, specializing in AI and ML systems. I focus on building things from scratch — transformers, neural nets, custom attention mechanisms — because understanding the internals matters.",
+    "My current research interest is in FinTech applications of deep learning, specifically option pricing with neural networks. I'm also VP at Coding Club RVCE and published a chapter in an IGI Global book on Generative AI."
+  ],
+  "gpa": "8.31",
+  "skills": [
+    "Python", "PyTorch", "C++", "Java",
+    "LangChain", "TensorFlow", "JAX",
+    "MLOps", "Neural Architecture Design",
+    "LLM Integration", "FinTech ML"
+  ],
+  "experience": [
+    {
+      "role": "Research Intern",
+      "org": "IIIT Hyderabad",
+      "period": "Upcoming",
+      "desc": "Working on AI research projects."
+    },
+    {
+      "role": "ML Engineer Intern",
+      "org": "Samsung Research Institute",
+      "period": "2023",
+      "desc": "Optimized computer vision models for mobile deployment."
+    },
+    {
+      "role": "ML Engineer Intern",
+      "org": "Qualitas Technologies",
+      "period": "2023",
+      "desc": "Built fintech ML systems including option pricing models using neural networks."
+    },
+    {
+      "role": "AI Engineer Intern",
+      "org": "Spoda AI",
+      "period": "2022",
+      "desc": "Developed multimodal AI features for the product."
+    }
+  ],
+  "certifications": [
+    "Data Science for Engineers — NPTEL",
+    "Machine Learning Foundations — Coursera",
+    "AI Development Track — Infosys Springboard"
+  ]
+}
