@@ -1,129 +1,70 @@
 "use client";
 import React, { FC } from "react";
-import Image from "next/legacy/image";
-import { TypeAnimation } from "react-type-animation";
 import Link from "next/link";
 
 const Hero: FC = () => {
   return (
-    <section className="min-h-screen flex items-center py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Content Column */}
-          <div className="space-y-6 fade-in-up">
-            <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Hi, I&apos;m{" "}
-                <span className="text-primary-600">Apoorv</span>
-              </h1>
-              
-              <div className="text-2xl md:text-3xl font-medium text-gray-700">
-                <TypeAnimation
-                  sequence={[
-                    "AI Engineer",
-                    1000,
-                    "ML Architect",
-                    1000,
-                    "Neural Network Developer",
-                    1000,
-                    "Deep Learning Researcher",
-                    1000,
-                    "Algorithm Optimizer",
-                    1000,
-                  ]}
-                  wrapper="span"
-                  speed={50}
-                  repeat={Infinity}
-                  className="text-primary-600"
-                />
-              </div>
-              
-              <div className="space-y-4 text-lg text-gray-600 leading-relaxed max-w-xl">
-                <p>
-                  Passionate about cutting-edge{" "}
-                  <span className="font-semibold text-gray-900">
-                    Artificial Intelligence
-                  </span>{" "}
-                  and{" "}
-                  <span className="font-semibold text-gray-900">
-                    Machine Learning
-                  </span>{" "}
-                  technologies.
-                </p>
-                
-                <p>
-                  Currently an upcoming intern at{" "}
-                  <span className="font-semibold text-primary-600">
-                    IIIT Hyderabad
-                  </span>
-                  , and VP at Coding Club RVCE. Previously optimized neural 
-                  networks at Samsung Research Institute, Qualitas Technologies, 
-                  and Spoda AI.
-                </p>
-                
-                <div className="flex flex-wrap gap-2 text-sm font-medium">
-                  <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full">
-                    Python
-                  </span>
-                  <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full">
-                    PyTorch
-                  </span>
-                  <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full">
-                    C++
-                  </span>
-                  <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full">
-                    Java
-                  </span>
-                </div>
-              </div>
-              
-              <div className="flex flex-wrap gap-4 pt-6">
-                <Link
-                  href="/#contact"
-                  className="btn-primary text-center"
-                >
-                  Get In Touch
-                </Link>
-                <Link
-                  href="https://drive.google.com/file/d/1zg1UKUZurEGav0FIgJS_1ClfY1hlbioN/view?usp=drive_link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary text-center"
-                >
-                  Download Resume
-                </Link>
-                <Link 
-                  href="https://github.com/ApoorvBrooklyn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary text-center"
-                >
-                  View GitHub
-                </Link>
-              </div>
-            </div>
+    <section className="min-h-[60vh] flex items-center py-20">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 w-full">
+        <div className="space-y-6">
+          <div className="space-y-2">
+            <p className="text-sm text-neutral-500 font-mono tracking-wide uppercase">
+              AI Engineer
+            </p>
+            <h1 className="text-4xl sm:text-5xl font-bold text-neutral-950 tracking-tight leading-tight">
+              Apoorv Sadhale
+            </h1>
           </div>
-          
-          {/* Image Column */}
-          <div className="flex justify-center lg:justify-end fade-in">
-            <div className="relative">
-              {/* Profile image container */}
-              <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-xl">
-                <Image
-                  src="/heroImg.png"
-                  alt="Apoorv's Profile"
-                  layout="fill"
-                  objectFit="cover"
-                  priority={true}
-                  className="transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-              
-              {/* Subtle decorative elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary-100 rounded-full opacity-80"></div>
-              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-primary-200 rounded-full opacity-60"></div>
-              <div className="absolute top-1/2 -right-6 w-4 h-4 bg-primary-300 rounded-full opacity-40"></div>
-            </div>
+
+          <div className="space-y-4 max-w-xl">
+            <p className="text-lg text-neutral-600 leading-relaxed">
+              I build neural networks and ML systems, and occasionally write about what I learn along the way.
+            </p>
+            <p className="text-base text-neutral-500 leading-relaxed">
+              ECE student at RVCE. Interning at{" "}
+              <span className="text-neutral-800 font-medium">IIIT Hyderabad</span>.
+              Previously built CV models at{" "}
+              <span className="text-neutral-800 font-medium">Samsung Research</span>,
+              fintech ML at{" "}
+              <span className="text-neutral-800 font-medium">Qualitas Technologies</span>, and
+              multimodal AI at{" "}
+              <span className="text-neutral-800 font-medium">Spoda AI</span>.
+              VP at Coding Club RVCE.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-3 pt-2">
+            <a
+              href="https://github.com/ApoorvBrooklyn"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm text-neutral-950 border border-neutral-200 rounded-md px-3 py-1.5 hover:bg-neutral-50 transition-colors"
+            >
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              </svg>
+              GitHub
+            </a>
+            <a
+              href="https://drive.google.com/file/d/1zg1UKUZurEGav0FIgJS_1ClfY1hlbioN/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm text-neutral-950 border border-neutral-200 rounded-md px-3 py-1.5 hover:bg-neutral-50 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Resume
+            </a>
+            <Link
+              href="/#contact"
+              className="inline-flex items-center gap-1.5 text-sm text-white bg-neutral-950 rounded-md px-3 py-1.5 hover:bg-neutral-800 transition-colors"
+            >
+              Get in touch
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
         </div>
       </div>

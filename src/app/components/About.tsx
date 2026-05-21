@@ -1,145 +1,92 @@
-import React, { useState, ReactElement } from "react";
-import Image from "next/legacy/image";
+import React from "react";
+import fs from "fs";
+import path from "path";
 
-interface TabData {
-  title: string;
-  id: string;
-  content: ReactElement;
+interface Experience {
+  role: string;
+  org: string;
+  period: string;
+  desc: string;
 }
 
-const TAB_DATA: TabData[] = [
-  {
-    title: "Skills",
-    id: "skills",
-    content: (
-      <ul className="space-y-3">
-        {[
-          { skill: "Python & PyTorch", level: "Expert" },
-          { skill: "Neural Architecture Design", level: "Advanced" },
-          { skill: "LangChain & LLM Integration", level: "Advanced" },
-          { skill: "C++ for High Performance ML", level: "Intermediate" },
-          { skill: "TensorFlow & JAX", level: "Intermediate" },
-          { skill: "MLOps & Model Deployment", level: "Advanced" }
-        ].map((item, index) => (
-          <li key={index} className="flex items-center justify-between">
-            <span className="text-gray-700">{item.skill}</span>
-            <span className="text-primary-600 text-sm font-medium bg-primary-50 px-2 py-1 rounded">
-              {item.level}
-            </span>
-          </li>
-        ))}
-      </ul>
-    ),
-  },
-  {
-    title: "Education",
-    id: "education",
-    content: (
-      <ul className="space-y-4">
-        {[
-          { item: "Electronics & Communication Engineering", meta: "GPA: 8.31" },
-          { item: "Deep Learning Specialization", meta: "Neural Networks" },
-          { item: "Generative AI Architecture", meta: "Transformers & LLMs" },
-          { item: "FinTech ML Applications", meta: "Option Pricing Models" },
-          { item: "MLOps & Model Optimization", meta: "Production AI Systems" }
-        ].map((item, index) => (
-          <li key={index} className="border-l-2 border-primary-200 pl-4">
-            <div className="font-medium text-gray-900">{item.item}</div>
-            <div className="text-gray-600 text-sm">{item.meta}</div>
-          </li>
-        ))}
-      </ul>
-    ),
-  },
-  {
-    title: "Certifications",
-    id: "certifications",
-    content: (
-      <ul className="space-y-4">
-        {[
-          { cert: "Data Science for Engineers", org: "NPTEL", focus: "Statistical ML" },
-          { cert: "Machine Learning Foundations", org: "Coursera", focus: "Core Algorithms" },
-          { cert: "AI Development Track", org: "Infosys Springboard", focus: "Enterprise AI" },
-          { cert: "PyTorch Deep Learning", org: "Self-Study", focus: "Neural Networks" }
-        ].map((item, index) => (
-          <li key={index} className="border-l-2 border-success-200 pl-4">
-            <div className="font-medium text-gray-900">{item.cert}</div>
-            <div className="text-gray-600 text-sm">
-              {item.org} • Focus: {item.focus}
-            </div>
-          </li>
-        ))}
-      </ul>
-    ),
-  },
-];
+interface AboutData {
+  bio: string[];
+  gpa: string;
+  skills: string[];
+  experience: Experience[];
+  certifications: string[];
+}
+
+function getAboutData(): AboutData {
+  const filePath = path.join(process.cwd(), "content/about.json");
+  const raw = fs.readFileSync(filePath, "utf8");
+  return JSON.parse(raw);
+}
 
 export default function About() {
-  const [tab, setTab] = useState("skills");
-  
-  const handleTabChange = (id) => {
-    setTab(id);
-  };
-  
+  const data = getAboutData();
+
   return (
-    <section className="bg-gray-50 py-16" id="about">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="section-title">About Me</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Passionate AI Engineer with expertise in neural networks and machine learning
-          </p>
+    <section id="about" className="py-20 border-t border-neutral-100">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-10">
+          About
+        </h2>
+
+        <div className="grid sm:grid-cols-[1fr_1fr] gap-12">
+          <div className="space-y-4">
+            {data.bio.map((para, i) => (
+              <p key={i} className="text-neutral-700 leading-relaxed">
+                {para}
+              </p>
+            ))}
+            <p className="text-neutral-500 text-sm">GPA: {data.gpa} / 10</p>
+          </div>
+
+          <div>
+            <p className="text-sm font-medium text-neutral-950 mb-3">Skills</p>
+            <div className="flex flex-wrap gap-2">
+              {data.skills.map((s) => (
+                <span
+                  key={s}
+                  className="text-xs text-neutral-600 bg-neutral-100 border border-neutral-200 px-2.5 py-1 rounded-md"
+                >
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
-        
-        <div className="md:grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative mb-8 md:mb-0">
-            <div className="relative w-full max-w-md mx-auto">
-              <Image
-                src="/Images/Image.jpg"
-                alt="Apoorv - AI/ML Engineer"
-                width={400}
-                height={400}
-                className="rounded-lg shadow-lg w-full h-auto"
-              />
-            </div>
-          </div>
-          
+
+        <div className="mt-12">
+          <p className="text-sm font-medium text-neutral-950 mb-6">Experience</p>
           <div className="space-y-6">
-            <div className="prose prose-lg">
-              <p className="text-gray-700 leading-relaxed">
-                Dedicated Electronics and Communication Engineering student specializing in 
-                <span className="font-semibold text-primary-600"> Artificial Intelligence</span> and
-                <span className="font-semibold text-primary-600"> Machine Learning</span> architectures. 
-              </p>
-              <p className="text-gray-700 leading-relaxed">
-                Deep expertise in FinTech applications, currently developing 
-                <span className="font-semibold text-gray-900"> Option Pricing Models</span> using neural networks for
-                financial markets. Experienced in building foundational models and implementing custom architectures from scratch.
-              </p>
-            </div>
-            
-            <div className="border-b border-gray-200">
-              <nav className="flex space-x-8">
-                {TAB_DATA.map((data) => (
-                  <button
-                    key={data.id}
-                    onClick={() => handleTabChange(data.id)}
-                    className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200 ${
-                      tab === data.id 
-                        ? "border-primary-500 text-primary-600" 
-                        : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-                    }`}
-                  >
-                    {data.title}
-                  </button>
-                ))}
-              </nav>
-            </div>
-            
-            <div className="card p-6">
-              {TAB_DATA.find((t) => t.id === tab).content}
-            </div>
+            {data.experience.map((e, i) => (
+              <div key={i} className="grid grid-cols-[1fr_auto] gap-4 items-start">
+                <div>
+                  <p className="text-sm font-medium text-neutral-950">
+                    {e.role} —{" "}
+                    <span className="text-neutral-600 font-normal">{e.org}</span>
+                  </p>
+                  <p className="text-sm text-neutral-500 mt-1">{e.desc}</p>
+                </div>
+                <span className="text-xs text-neutral-400 font-mono whitespace-nowrap mt-0.5">
+                  {e.period}
+                </span>
+              </div>
+            ))}
           </div>
+        </div>
+
+        <div className="mt-10 pt-8 border-t border-neutral-100">
+          <p className="text-sm font-medium text-neutral-950 mb-4">Certifications</p>
+          <ul className="space-y-2">
+            {data.certifications.map((c) => (
+              <li key={c} className="text-sm text-neutral-500">
+                {c}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
