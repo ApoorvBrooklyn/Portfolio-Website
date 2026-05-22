@@ -10,12 +10,20 @@ interface PostMeta {
   description: string;
 }
 
+interface Status {
+  savesWillWork: boolean;
+  isProduction: boolean;
+  missing: string[];
+}
+
 export default function Dashboard() {
   const [posts, setPosts] = useState<PostMeta[]>([]);
   const [deleting, setDeleting] = useState<string | null>(null);
+  const [status, setStatus] = useState<Status | null>(null);
 
   useEffect(() => {
     fetch("/api/admin/posts").then((r) => r.json()).then(setPosts);
+    fetch("/api/admin/status").then((r) => r.json()).then(setStatus);
   }, []);
 
   const handleDelete = async (slug: string) => {
@@ -29,6 +37,30 @@ export default function Dashboard() {
   return (
     <AdminShell title="Dashboard">
       <div className="space-y-8">
+        {/* Config warning */}
+        {status && !status.savesWillWork && (
+          <div className="border border-amber-200 bg-amber-50 rounded-lg px-4 py-3 text-sm">
+            <p className="font-medium text-amber-800 mb-1">Saves will fail in production</p>
+            <p className="text-amber-700 text-xs leading-relaxed">
+              The site is running on Vercel but GitHub credentials are missing. Add these environment variables in your{" "}
+              <a href="https://vercel.com/dashboard" target="_blank" rel="noreferrer" className="underline underline-offset-2">
+                Vercel project settings
+              </a>{" "}
+              and redeploy:
+            </p>
+            <div className="mt-2 font-mono text-xs text-amber-800 space-y-0.5">
+              {status.missing.map((key) => (
+                <p key={key} className="before:content-['→_'] before:text-amber-400">{key}</p>
+              ))}
+              {!status.missing.includes("GITHUB_OWNER") && <p className="text-amber-600">GITHUB_OWNER=ApoorvBrooklyn</p>}
+              {!status.missing.includes("GITHUB_REPO") && <p className="text-amber-600">GITHUB_REPO=Portfolio-Website</p>}
+            </div>
+            <p className="text-xs text-amber-600 mt-2">
+              Create a token at github.com/settings/tokens with <strong>repo</strong> scope.
+            </p>
+          </div>
+        )}
+
         {/* Quick actions */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           <Link

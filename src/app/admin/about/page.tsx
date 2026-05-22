@@ -74,7 +74,8 @@ export default function AboutEditor() {
       setSaved(true);
       setTimeout(() => setSaved(false), 2500);
     } else {
-      setError("Save failed.");
+      const body = await res.json().catch(() => ({}));
+      setError(body.error ?? "Save failed.");
     }
   };
 
