@@ -35,16 +35,9 @@
       "org": "Qualitas Technologies",
       "period": "2023",
       "desc": "Built fintech ML systems including option pricing models using neural networks."
-    },
-    {
-      "role": "AI Engineer Intern",
-      "org": "Spoda AI",
-      "period": "2022",
-      "desc": "Developed multimodal AI features for the product."
     }
   ],
   "certifications": [
-    "Data Science for Engineers — NPTEL",
     "Machine Learning Foundations — Coursera",
     "AI Development Track — Infosys Springboard"
   ]
