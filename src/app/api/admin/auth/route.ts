@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   const { token } = await req.json();
   const adminToken = process.env.ADMIN_TOKEN ?? "changeme";

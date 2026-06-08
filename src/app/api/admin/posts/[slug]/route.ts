@@ -3,6 +3,8 @@ import { getPost } from "@/lib/posts";
 import { savePost, deletePost } from "@/lib/content";
 import { revalidatePath } from "next/cache";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(_: NextRequest, { params }: { params: { slug: string } }) {
   const post = await getPost(params.slug);
   if (!post) return NextResponse.json({ error: "Not found" }, { status: 404 });

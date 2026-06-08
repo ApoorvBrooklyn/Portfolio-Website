@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { saveAbout, readAboutSync } from "@/lib/content";
 import { revalidatePath } from "next/cache";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const data = readAboutSync();
   return NextResponse.json(data);
