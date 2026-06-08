@@ -1,24 +1,27 @@
 "use client";
 import React, { useState, FC } from "react";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 
 const Contact: FC = () => {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
     try {
       await emailjs.sendForm(
         "service_ucgutfg",
         "template_esbcm5o",
         e.currentTarget,
-        "r5Ku7DzQjzCGO0CEk"
+        { publicKey: "r5Ku7DzQjzCGO0CEk" }
       );
       setSent(true);
-    } catch (err) {
-      console.error(err);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : (typeof err === "object" && err !== null && "text" in err ? String((err as { text: string }).text) : "Failed to send message. Please try again.");
+      setError(msg);
     } finally {
       setLoading(false);
     }
@@ -131,6 +134,9 @@ const Contact: FC = () => {
                     className="w-full text-sm border border-neutral-200 rounded-md px-3 py-2 bg-white text-neutral-950 placeholder:text-neutral-300 focus:outline-none focus:border-neutral-400 transition-colors resize-none"
                   />
                 </div>
+                {error && (
+                  <p className="text-xs text-red-500">{error}</p>
+                )}
                 <button
                   type="submit"
                   disabled={loading}
