@@ -1,14 +1,21 @@
 {
   "bio": [
     "I'm an Electronics & Communication Engineering student at RVCE, specializing in AI and ML systems. I focus on building things from scratch — transformers, neural nets, custom attention mechanisms — because understanding the internals matters.",
-    "My current research interest is in FinTech applications of deep learning, specifically option pricing with neural networks. I'm also VP at Coding Club RVCE and published a chapter in an IGI Global book on Generative AI."
+    "My current research interest is in FinTech applications of deep learning, specifically option pricing with neural networks. "
   ],
   "gpa": "8.31",
   "skills": [
-    "Python", "PyTorch", "C++", "Java",
-    "LangChain", "TensorFlow", "JAX",
-    "MLOps", "Neural Architecture Design",
-    "LLM Integration", "FinTech ML"
+    "Python",
+    "PyTorch",
+    "C++",
+    "Java",
+    "LangChain",
+    "TensorFlow",
+    "JAX",
+    "MLOps",
+    "Neural Architecture Design",
+    "LLM Integration",
+    "FinTech ML"
   ],
   "experience": [
     {
