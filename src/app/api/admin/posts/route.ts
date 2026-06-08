@@ -3,6 +3,8 @@ import { getAllPosts } from "@/lib/posts";
 import { savePost } from "@/lib/content";
 import { revalidatePath } from "next/cache";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const posts = getAllPosts();
   return NextResponse.json(posts);
