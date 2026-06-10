@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Multihead-Attention Mechanism",
+    "description": "Custom attention mechanism for multi-topic queries. Routes sub-queries to specialized SLMs based on topic detection.",
+    "link": "https://github.com/ApoorvBrooklyn/MultiHead-Attention-Mechanism",
+    "tags": ["PyTorch", "Attention", "NLP"]
+  },
+  {
+    "id": 2,
+    "name": "Credit Risk Modelling",
+    "description": "Financial analytics platform with real-time portfolio tracking, technical analysis, fraud detection, and risk management.",
+    "link": "https://github.com/ApoorvBrooklyn/Credit_Risk_Modelling",
+    "tags": ["Streamlit", "Finance", "ML"]
+  },
+  {
+    "id": 3,
+    "name": "Transformer — from scratch",
+    "description": "Full transformer architecture implemented in PyTorch without using high-level abstractions. Encoder, decoder, multi-head attention, positional encoding.",
+    "link": "https://github.com/ApoorvBrooklyn/Transformer-Model",
+    "tags": ["PyTorch", "Transformers", "NLP"]
+  },
+  {
+    "id": 4,
+    "name": "Neural Network — from scratch",
+    "description": "Complete neural network implementation using only NumPy. No PyTorch or any ML framework.",
+    "link": "https://github.com/ApoorvBrooklyn/Neural_Network_with_Layers/tree/main",
+    "tags": ["NumPy", "Deep Learning"]
+  },
+  {
+    "id": 5,
+    "name": "Nano-GPT",
+    "description": "Implementation of Andrej Karpathy's nanoGPT. Character-level language model with self-attention.",
+    "link": "https://github.com/ApoorvBrooklyn/Nano-GPT",
+    "tags": ["PyTorch", "LLM", "GPT"]
+  },
+  {
+    "id": 6,
+    "name": "Chapter — IGI Global Publication",
+    "description": "Co-authored a book chapter on Advanced Applications of Generative AI and NLP Models, published by IGI Global.",
+    "link": "https://www.igi-global.com/chapter/advanced-applications-of-generative-ai-and-natural-language-processing-models/335833",
+    "tags": ["Research", "Publication"]
+  }
+]

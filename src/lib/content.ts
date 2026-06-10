@@ -3,6 +3,8 @@ import path from "path";
 
 const postsDir = path.join(process.cwd(), "content/posts");
 const aboutPath = path.join(process.cwd(), "content/about.json");
+const heroPath = path.join(process.cwd(), "content/hero.json");
+const projectsPath = path.join(process.cwd(), "content/projects.json");
 
 // ── GitHub API helpers ──────────────────────────────────────────────────────
 
@@ -122,6 +124,34 @@ export async function saveAbout(data: object): Promise<void> {
 
 export function readAboutSync() {
   return JSON.parse(fs.readFileSync(aboutPath, "utf8"));
+}
+
+export function readHeroSync() {
+  return JSON.parse(fs.readFileSync(heroPath, "utf8"));
+}
+
+export async function saveHero(data: object): Promise<void> {
+  const content = JSON.stringify(data, null, 2);
+  if (isGitHubConfigured()) {
+    await ghWrite("content/hero.json", content, "Update hero data");
+  } else {
+    assertLocalOrThrow();
+    fs.writeFileSync(heroPath, content, "utf8");
+  }
+}
+
+export function readProjectsSync() {
+  return JSON.parse(fs.readFileSync(projectsPath, "utf8"));
+}
+
+export async function saveProjects(data: object): Promise<void> {
+  const content = JSON.stringify(data, null, 2);
+  if (isGitHubConfigured()) {
+    await ghWrite("content/projects.json", content, "Update projects data");
+  } else {
+    assertLocalOrThrow();
+    fs.writeFileSync(projectsPath, content, "utf8");
+  }
 }
 
 // In production (Vercel) without GitHub credentials, the filesystem is read-only.
