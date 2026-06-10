@@ -1,41 +1,46 @@
-"use client";
-import React, { FC } from "react";
+import React from "react";
 import Link from "next/link";
+import fs from "fs";
+import path from "path";
 
-const Hero: FC = () => {
+interface HeroData {
+  label: string;
+  name: string;
+  headline: string;
+  subline: string;
+  githubUrl: string;
+  resumeUrl: string;
+}
+
+function getHeroData(): HeroData {
+  const filePath = path.join(process.cwd(), "content/hero.json");
+  return JSON.parse(fs.readFileSync(filePath, "utf8"));
+}
+
+export default function Hero() {
+  const h = getHeroData();
+
   return (
     <section className="min-h-[60vh] flex items-center py-20">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 w-full">
         <div className="space-y-6">
           <div className="space-y-2">
             <p className="text-sm text-neutral-500 font-mono tracking-wide uppercase">
-              AI Engineer
+              {h.label}
             </p>
             <h1 className="text-4xl sm:text-5xl font-bold text-neutral-950 tracking-tight leading-tight">
-              Apoorv Sadhale
+              {h.name}
             </h1>
           </div>
 
           <div className="space-y-4 max-w-xl">
-            <p className="text-lg text-neutral-600 leading-relaxed">
-              I build neural networks and ML systems, and occasionally write about what I learn along the way.
-            </p>
-            <p className="text-base text-neutral-500 leading-relaxed">
-              ECE student at RVCE. Interning at{" "}
-              <span className="text-neutral-800 font-medium">IIIT Hyderabad</span>.
-              Previously built CV models at{" "}
-              <span className="text-neutral-800 font-medium">Samsung Research</span>,
-              fintech ML at{" "}
-              <span className="text-neutral-800 font-medium">Qualitas Technologies</span>, and
-              multimodal AI at{" "}
-              <span className="text-neutral-800 font-medium">Spoda AI</span>.
-              VP at Coding Club RVCE.
-            </p>
+            <p className="text-lg text-neutral-600 leading-relaxed">{h.headline}</p>
+            <p className="text-base text-neutral-500 leading-relaxed">{h.subline}</p>
           </div>
 
           <div className="flex flex-wrap gap-3 pt-2">
             <a
-              href="https://github.com/ApoorvBrooklyn"
+              href={h.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-sm text-neutral-950 border border-neutral-200 rounded-md px-3 py-1.5 hover:bg-neutral-50 transition-colors"
@@ -46,7 +51,7 @@ const Hero: FC = () => {
               GitHub
             </a>
             <a
-              href="https://drive.google.com/file/d/1zg1UKUZurEGav0FIgJS_1ClfY1hlbioN/view?usp=drive_link"
+              href={h.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-sm text-neutral-950 border border-neutral-200 rounded-md px-3 py-1.5 hover:bg-neutral-50 transition-colors"
@@ -70,6 +75,4 @@ const Hero: FC = () => {
       </div>
     </section>
   );
-};
-
-export default Hero;
+}
