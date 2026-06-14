@@ -21,7 +21,7 @@
     {
       "role": "Research Intern",
       "org": "IIIT Hyderabad",
-      "period": "Upcoming",
+      "period": "2025",
       "desc": "Working on AI research projects."
     },
     {
@@ -35,6 +35,12 @@
       "org": "Qualitas Technologies",
       "period": "2023",
       "desc": "Built fintech ML systems including option pricing models using neural networks."
+    },
+    {
+      "role": "Software Engineer",
+      "org": "Ethos Life Technologies",
+      "period": "2026",
+      "desc": ""
     }
   ],
   "certifications": [
