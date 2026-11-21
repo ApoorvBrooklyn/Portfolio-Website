@@ -1,7 +1,7 @@
 {
   "bio": [
-    "I'm an Electronics & Communication Engineering student at RVCE, specializing in AI and ML systems. I focus on building things from scratch — transformers, neural nets, custom attention mechanisms — because understanding the internals matters.",
-    "My current research interest is in FinTech applications of deep learning, specifically option pricing with neural networks. "
+    "I'm a backend Engineer, specialising in AI and ML systems and integrations. I focus on building things from scratch transformers, neural nets, custom attention mechanisms because understanding the internals matters.",
+    "My current research interest is in FinTech applications of deep learning, specifically option pricing with neural networks. I am deep diving on the GPU inference in Apple Silicon. "
   ],
   "gpa": "8.2",
   "skills": [
@@ -31,20 +31,11 @@
       "desc": "Optimized computer vision models for mobile deployment."
     },
     {
-      "role": "ML Engineer Intern",
-      "org": "Qualitas Technologies",
-      "period": "2023",
-      "desc": "Built fintech ML systems including option pricing models using neural networks."
-    },
-    {
       "role": "Software Engineer",
       "org": "Ethos Life Technologies",
       "period": "2026",
-      "desc": ""
+      "desc": "I am working in the underwriting team which is core technology of the Ethos Life. I am lead engineer on building AI and LLM Platform for Core underwriting engine"
     }
   ],
-  "certifications": [
-    "Machine Learning Foundations — Coursera",
-    "AI Development Track — Infosys Springboard"
-  ]
+  "certifications": []
 }
