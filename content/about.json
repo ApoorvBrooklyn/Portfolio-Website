@@ -3,7 +3,7 @@
     "I'm a backend Engineer, specialising in AI and ML systems and integrations. I focus on building things from scratch transformers, neural nets, custom attention mechanisms because understanding the internals matters.",
     "My current research interest is in FinTech applications of deep learning, specifically option pricing with neural networks. I am deep diving on the GPU inference in Apple Silicon. "
   ],
-  "gpa": "8.2",
+  "gpa": "",
   "skills": [
     "Python",
     "PyTorch",
@@ -34,7 +34,7 @@
   "certifications": [
     "Machine Learning Specialization - Andrew NG"
   ],
-  "education": "B. E. ECE, R. V. College of Engineering ",
+  "education": "",
   "publications": [],
-  "educationPeriod": "Nov 2022 - June 2026"
+  "educationPeriod": ""
 }
