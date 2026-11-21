@@ -18,20 +18,38 @@
     "name": "Transformer — from scratch",
     "description": "Full transformer architecture implemented in PyTorch without high-level abstractions. Encoder, decoder, multi-head attention, positional encoding.",
     "link": "https://github.com/ApoorvBrooklyn/Transformer-Model",
-    "tags": ["PyTorch", "Transformers", "NLP"]
+    "tags": [
+      "PyTorch",
+      "Transformers",
+      "NLP"
+    ]
   },
   {
     "id": 4,
-    "name": "Multihead-Attention Mechanism",
-    "description": "Custom attention mechanism for multi-topic queries. Routes sub-queries to specialized SLMs based on topic detection.",
-    "link": "https://github.com/ApoorvBrooklyn/MultiHead-Attention-Mechanism",
-    "tags": ["PyTorch", "Attention", "NLP"]
+    "name": "Neural Network — from scratch",
+    "description": "Complete neural network implementation using only NumPy. No PyTorch or any ML framework.",
+    "link": "https://github.com/ApoorvBrooklyn/Neural_Network_with_Layers/tree/main",
+    "tags": [
+      "NumPy",
+      "Deep Learning"
+    ]
   },
   {
     "id": 5,
     "name": "Nano-GPT",
     "description": "Implementation of Andrej Karpathy's nanoGPT. Character-level language model with self-attention.",
     "link": "https://github.com/ApoorvBrooklyn/Nano-GPT",
-    "tags": ["PyTorch", "LLM", "GPT"]
+    "tags": [
+      "PyTorch",
+      "LLM",
+      "GPT"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "MetalLLM",
+    "description": "MetalLLM is an open-source Python library that brings large-context LLM inference to Apple Silicon Macs (M1–M4) using PyTorch MPS and future custom Metal kernels.",
+    "link": "https://github.com/ApoorvBrooklyn/MetalLLM",
+    "tags": []
   }
 ]

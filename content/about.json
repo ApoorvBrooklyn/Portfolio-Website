@@ -1,41 +1,28 @@
 {
   "bio": [
-    "I'm a software engineer working on backend systems and integrating AI into production workflows. At Ethos Life I sit on the underwriting team, improving a highly deterministic underwriting engine with AI-assisted capabilities while keeping accuracy and reliability intact.",
-    "I have a strong foundation in Python, C++, APIs, and scalable systems, with hands-on experience deploying ML/LLM services. I graduated from R.V. College of Engineering in 2026 with a B.E. in Electronics and Communication."
+    "I'm a backend Engineer, specialising in AI and ML systems and integrations. I focus on building things from scratch transformers, neural nets, custom attention mechanisms because understanding the internals matters.",
+    "My current research interest is in FinTech applications of deep learning, specifically option pricing with neural networks. I am deep diving on the GPU inference in Apple Silicon. "
   ],
-  "gpa": "8.57",
-  "education": "B.E. Electronics and Communication, R.V. College of Engineering",
-  "educationPeriod": "Nov 2022 – Aug 2026",
+  "gpa": "8.2",
   "skills": [
     "Python",
-    "Golang",
-    "TypeScript",
-    "Rust",
-    "C++",
-    "Flask",
-    "FastAPI",
-    "REST APIs",
-    "SQL",
-    "MongoDB",
-    "LLM Integration",
-    "LoRA/QLoRA",
-    "Hugging Face",
-    "vLLM",
     "PyTorch",
-    "React.js",
-    "Tailwind CSS",
-    "Linux",
-    "Docker",
-    "GCP",
-    "CUDA Concepts",
-    "Milvus"
+    "C++",
+    "Java",
+    "LangChain",
+    "TensorFlow",
+    "JAX",
+    "MLOps",
+    "Neural Architecture Design",
+    "LLM Integration",
+    "FinTech ML"
   ],
   "experience": [
     {
-      "role": "Backend Engineer – Underwriting",
-      "org": "Ethos Life Technologies",
-      "period": "Jul 2026 – Present",
-      "desc": "Improving a highly deterministic underwriting engine with AI-assisted decisioning. Led the AI platform for underwriting, translating model outputs into controlled production flows and helping improve manual underwriting and strategy-team efficiency by 50%."
+      "role": "Research Intern",
+      "org": "IIIT Hyderabad",
+      "period": "2025",
+      "desc": "Working on AI research projects."
     },
     {
       "role": "PRISM Intern – Android Development",
@@ -51,19 +38,13 @@
       "period": "Dec 2023"
     },
     {
-      "title": "Future Prospects for Natural Language Processing",
-      "venue": "CRC Press",
-      "period": "Dec 2025"
-    },
-    {
-      "title": "Blockchain Information Exchange",
-      "venue": "Springer",
-      "period": "2026"
+      "role": "Software Engineer",
+      "org": "Ethos Life Technologies",
+      "period": "2026",
+      "desc": "I am working in the underwriting team which is core technology of the Ethos Life. I am lead engineer on building AI and LLM Platform for Core underwriting engine"
     }
   ],
   "certifications": [
-    "Data Science for Engineers — NPTEL",
-    "Machine Learning Foundations — Coursera",
-    "AI Development Track — Infosys Springboard"
+    "Machine Learning Specialization - Andrew NG"
   ]
 }

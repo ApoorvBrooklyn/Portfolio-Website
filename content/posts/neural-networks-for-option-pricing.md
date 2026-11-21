@@ -1,11 +1,11 @@
 ---
 title: "Neural Networks for Option Pricing: What Works and What Doesn't"
 date: "2024-01-28"
-description: "Notes from building option pricing models with neural networks at Qualitas Technologies. The gap between a working model and a deployable one is wider than you think."
+description: "Notes from building option pricing models with neural networks. The gap between a working model and a deployable one is wider than you think."
 tags: ["finance", "deep-learning", "pytorch", "fintech"]
 ---
 
-At Qualitas Technologies I spent a few months building neural network-based option pricing models. The problem sounded clean on paper — replace the Black-Scholes formula with a network that can price complex instruments more accurately.
+I spent last few months building neural network-based option pricing models. The problem sounded clean on paper — replace the Black-Scholes formula with a network that can price complex instruments more accurately.
 
 It turned out to be a good lesson in what "working" actually means in production ML.
 
