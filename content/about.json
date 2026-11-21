@@ -25,26 +25,16 @@
       "desc": "Working on AI research projects."
     },
     {
-      "role": "PRISM Intern – Android Development",
+      "role": "Intern",
       "org": "Samsung Research Institute Bangalore",
       "period": "Oct 2023 – Aug 2024",
       "desc": "Reconstructed an Android app at the system level from APK (40% faster debugging), improved runtime by 50% via multithreading and memory work, and integrated a custom neural network into OS-level multimedia libraries at 84% accuracy."
     }
   ],
-  "publications": [
-    {
-      "title": "Advanced Applications of Generative AI and NLP Models",
-      "venue": "IGI Global",
-      "period": "Dec 2023"
-    },
-    {
-      "role": "Software Engineer",
-      "org": "Ethos Life Technologies",
-      "period": "2026",
-      "desc": "I am working in the underwriting team which is core technology of the Ethos Life. I am lead engineer on building AI and LLM Platform for Core underwriting engine"
-    }
-  ],
   "certifications": [
     "Machine Learning Specialization - Andrew NG"
-  ]
+  ],
+  "education": "B. E. ECE, R. V. College of Engineering ",
+  "publications": [],
+  "educationPeriod": "Nov 2022 - June 2026"
 }
