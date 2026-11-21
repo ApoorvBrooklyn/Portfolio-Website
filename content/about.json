@@ -25,10 +25,17 @@
       "desc": "Working on AI research projects."
     },
     {
-      "role": "ML Engineer Intern",
-      "org": "Samsung Research Institute",
-      "period": "2023",
-      "desc": "Optimized computer vision models for mobile deployment."
+      "role": "PRISM Intern – Android Development",
+      "org": "Samsung Research Institute Bangalore",
+      "period": "Oct 2023 – Aug 2024",
+      "desc": "Reconstructed an Android app at the system level from APK (40% faster debugging), improved runtime by 50% via multithreading and memory work, and integrated a custom neural network into OS-level multimedia libraries at 84% accuracy."
+    }
+  ],
+  "publications": [
+    {
+      "title": "Advanced Applications of Generative AI and NLP Models",
+      "venue": "IGI Global",
+      "period": "Dec 2023"
     },
     {
       "role": "Software Engineer",

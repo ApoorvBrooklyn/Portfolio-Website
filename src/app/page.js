@@ -9,7 +9,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function Home() {
   return (
-    <main className="bg-white min-h-screen">
+    <main className="bg-paper min-h-screen">
       <Navbar />
       <div className="pt-14">
         <Hero />

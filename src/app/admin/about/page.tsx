@@ -9,11 +9,20 @@ interface Experience {
   desc: string;
 }
 
+interface Publication {
+  title: string;
+  venue: string;
+  period: string;
+}
+
 interface AboutData {
   bio: string[];
   gpa: string;
+  education?: string;
+  educationPeriod?: string;
   skills: string[];
   experience: Experience[];
+  publications?: Publication[];
   certifications: string[];
 }
 
@@ -78,6 +87,20 @@ export default function AboutEditor() {
   const removeCert = (i: number) =>
     setData({ ...data, certifications: data.certifications.filter((_, idx) => idx !== i) });
 
+  const publications = data.publications ?? [];
+  const updatePub = (i: number, field: keyof Publication, val: string) => {
+    const next = [...publications];
+    next[i] = { ...next[i], [field]: val };
+    setData({ ...data, publications: next });
+  };
+  const addPub = () =>
+    setData({
+      ...data,
+      publications: [...publications, { title: "", venue: "", period: "" }],
+    });
+  const removePub = (i: number) =>
+    setData({ ...data, publications: publications.filter((_, idx) => idx !== i) });
+
   const handleSave = async () => {
     setSaving(true);
     setError("");
@@ -141,17 +164,37 @@ export default function AboutEditor() {
           </div>
         </section>
 
-        {/* ── GPA ── */}
+        {/* ── Education ── */}
         <section>
-          <h3 className={`${sectionHead} mb-4`}>GPA</h3>
-          <div className="max-w-[160px]">
-            <label className={labelClass}>GPA (out of 10)</label>
-            <input
-              value={data.gpa}
-              onChange={(e) => setData({ ...data, gpa: e.target.value })}
-              className={fieldClass}
-              placeholder="8.31"
-            />
+          <h3 className={`${sectionHead} mb-4`}>Education</h3>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div>
+              <label className={labelClass}>Degree & school</label>
+              <input
+                value={data.education ?? ""}
+                onChange={(e) => setData({ ...data, education: e.target.value })}
+                className={fieldClass}
+                placeholder="B.E. Electronics and Communication, R.V. College of Engineering"
+              />
+            </div>
+            <div>
+              <label className={labelClass}>Period</label>
+              <input
+                value={data.educationPeriod ?? ""}
+                onChange={(e) => setData({ ...data, educationPeriod: e.target.value })}
+                className={fieldClass}
+                placeholder="Nov 2022 – Aug 2026"
+              />
+            </div>
+            <div className="max-w-[160px]">
+              <label className={labelClass}>GPA (out of 10)</label>
+              <input
+                value={data.gpa}
+                onChange={(e) => setData({ ...data, gpa: e.target.value })}
+                className={fieldClass}
+                placeholder="8.57"
+              />
+            </div>
           </div>
         </section>
 
@@ -255,6 +298,64 @@ export default function AboutEditor() {
                     onChange={(e) => updateExp(i, "desc", e.target.value)}
                     className={fieldClass}
                     placeholder="What you built or achieved"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Publications ── */}
+        <section>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className={sectionHead}>Publications</h3>
+            <button
+              onClick={addPub}
+              className="text-xs text-neutral-500 hover:text-neutral-950 border border-dashed border-neutral-300 hover:border-neutral-400 rounded px-3 py-1.5 transition-colors"
+            >
+              + Add
+            </button>
+          </div>
+          {publications.length === 0 && (
+            <p className="text-sm text-neutral-400 italic">No publications yet.</p>
+          )}
+          <div className="space-y-4">
+            {publications.map((pub, i) => (
+              <div key={i} className="border border-neutral-200 rounded-lg p-4 space-y-3 bg-white relative">
+                <button
+                  onClick={() => removePub(i)}
+                  className="absolute top-3 right-3 text-xs text-neutral-300 hover:text-red-400 transition-colors"
+                  title="Remove"
+                >
+                  ✕
+                </button>
+                <div className="grid sm:grid-cols-3 gap-3">
+                  <div className="sm:col-span-2">
+                    <label className={labelClass}>Title</label>
+                    <input
+                      value={pub.title}
+                      onChange={(e) => updatePub(i, "title", e.target.value)}
+                      className={fieldClass}
+                      placeholder="Chapter title"
+                    />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Year</label>
+                    <input
+                      value={pub.period}
+                      onChange={(e) => updatePub(i, "period", e.target.value)}
+                      className={fieldClass}
+                      placeholder="2026"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className={labelClass}>Venue</label>
+                  <input
+                    value={pub.venue}
+                    onChange={(e) => updatePub(i, "venue", e.target.value)}
+                    className={fieldClass}
+                    placeholder="Springer"
                   />
                 </div>
               </div>

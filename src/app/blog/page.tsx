@@ -59,7 +59,7 @@ export default function BlogPage() {
                       )}
                     </div>
                     <div className="flex-shrink-0 text-right space-y-1">
-                      <p className="text-xs text-neutral-400 font-mono whitespace-nowrap">
+                      <p className="text-xs text-neutral-400 italic whitespace-nowrap">
                         {formatDate(post.date)}
                       </p>
                       <p className="text-xs text-neutral-400">

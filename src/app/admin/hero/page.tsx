@@ -61,7 +61,7 @@ export default function HeroEditor() {
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
             <label className={labelClass}>Label (shown above name)</label>
-            <input value={data.label} onChange={set("label")} className={fieldClass} placeholder="AI Engineer" />
+            <input value={data.label} onChange={set("label")} className={fieldClass} placeholder="Backend Engineer" />
           </div>
           <div>
             <label className={labelClass}>Name</label>
@@ -76,7 +76,7 @@ export default function HeroEditor() {
             onChange={set("headline")}
             rows={3}
             className={`${fieldClass} resize-none`}
-            placeholder="I build neural networks and ML systems…"
+            placeholder="I build backend systems and put AI into production…"
           />
         </div>
 
@@ -87,7 +87,7 @@ export default function HeroEditor() {
             onChange={set("subline")}
             rows={4}
             className={`${fieldClass} resize-none`}
-            placeholder="ECE student at RVCE. Interning at…"
+            placeholder="Backend Engineer at Ethos Life. B.E. ECE, RVCE (2026)."
           />
         </div>
 

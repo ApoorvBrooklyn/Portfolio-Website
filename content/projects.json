@@ -1,19 +1,22 @@
 [
   {
     "id": 1,
-    "name": "Multihead-Attention Mechanism",
-    "description": "Custom attention mechanism for multi-topic queries. Routes sub-queries to specialized SLMs based on topic detection.",
-    "link": "https://github.com/ApoorvBrooklyn/MultiHead-Attention-Mechanism",
-    "tags": [
-      "PyTorch",
-      "Attention",
-      "NLP"
-    ]
+    "name": "LLM Inference Library (oLLM Alternative)",
+    "description": "Memory-aware paged KV cache with GPU/CPU/disk residency, prefetch, and eviction — 100k+ token contexts on Apple Silicon. Streaming softmax via log-sum-exp, plus a Metal kernel registry with MPS fallback for Llama, Qwen, and Mistral.",
+    "link": "https://github.com/ApoorvBrooklyn",
+    "tags": ["C++", "PyTorch", "CUDA", "Metal"]
+  },
+  {
+    "id": 2,
+    "name": "Lifelong Pathway AI Craft",
+    "description": "AI-driven career platform that assesses skills, finds gaps, and generates learning paths. React/TypeScript dashboards with a Flask backend, Groq for generation, and optional Milvus retrieval.",
+    "link": "https://github.com/ApoorvBrooklyn",
+    "tags": ["React", "TypeScript", "Flask", "Groq", "Milvus"]
   },
   {
     "id": 3,
     "name": "Transformer — from scratch",
-    "description": "Full transformer architecture implemented in PyTorch without using high-level abstractions. Encoder, decoder, multi-head attention, positional encoding.",
+    "description": "Full transformer architecture implemented in PyTorch without high-level abstractions. Encoder, decoder, multi-head attention, positional encoding.",
     "link": "https://github.com/ApoorvBrooklyn/Transformer-Model",
     "tags": [
       "PyTorch",
