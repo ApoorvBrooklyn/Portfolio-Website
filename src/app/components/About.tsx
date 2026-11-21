@@ -9,11 +9,20 @@ interface Experience {
   desc: string;
 }
 
+interface Publication {
+  title: string;
+  venue: string;
+  period: string;
+}
+
 interface AboutData {
   bio: string[];
   gpa: string;
+  education?: string;
+  educationPeriod?: string;
   skills: string[];
   experience: Experience[];
+  publications?: Publication[];
   certifications: string[];
 }
 
@@ -25,6 +34,7 @@ function getAboutData(): AboutData {
 
 export default function About() {
   const data = getAboutData();
+  const publications = data.publications ?? [];
 
   return (
     <section id="about" className="py-20 border-t border-neutral-100">
@@ -40,7 +50,15 @@ export default function About() {
                 {para}
               </p>
             ))}
-            <p className="text-neutral-500 text-sm">GPA: {data.gpa} / 10</p>
+            <div className="text-sm text-neutral-500 space-y-1">
+              {data.education && (
+                <p>
+                  {data.education}
+                  {data.educationPeriod ? ` · ${data.educationPeriod}` : ""}
+                </p>
+              )}
+              <p>GPA: {data.gpa} / 10</p>
+            </div>
           </div>
 
           <div>
@@ -49,7 +67,7 @@ export default function About() {
               {data.skills.map((s) => (
                 <span
                   key={s}
-                  className="text-xs text-neutral-600 bg-neutral-100 border border-neutral-200 px-2.5 py-1 rounded-md"
+                  className="text-xs text-neutral-600 bg-neutral-50 border border-neutral-200 px-2.5 py-1 rounded-md"
                 >
                   {s}
                 </span>
@@ -70,7 +88,7 @@ export default function About() {
                   </p>
                   <p className="text-sm text-neutral-500 mt-1">{e.desc}</p>
                 </div>
-                <span className="text-xs text-neutral-400 font-mono whitespace-nowrap mt-0.5">
+                <span className="text-xs text-neutral-400 italic whitespace-nowrap mt-0.5">
                   {e.period}
                 </span>
               </div>
@@ -78,16 +96,37 @@ export default function About() {
           </div>
         </div>
 
-        <div className="mt-10 pt-8 border-t border-neutral-100">
-          <p className="text-sm font-medium text-neutral-950 mb-4">Certifications</p>
-          <ul className="space-y-2">
-            {data.certifications.map((c) => (
-              <li key={c} className="text-sm text-neutral-500">
-                {c}
-              </li>
-            ))}
-          </ul>
-        </div>
+        {publications.length > 0 && (
+          <div className="mt-12">
+            <p className="text-sm font-medium text-neutral-950 mb-6">Publications</p>
+            <div className="space-y-5">
+              {publications.map((p) => (
+                <div key={p.title} className="grid grid-cols-[1fr_auto] gap-4 items-start">
+                  <div>
+                    <p className="text-sm font-medium text-neutral-950">{p.title}</p>
+                    <p className="text-sm text-neutral-500 mt-1">{p.venue}</p>
+                  </div>
+                  <span className="text-xs text-neutral-400 italic whitespace-nowrap mt-0.5">
+                    {p.period}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {data.certifications.length > 0 && (
+          <div className="mt-10 pt-8 border-t border-neutral-100">
+            <p className="text-sm font-medium text-neutral-950 mb-4">Certifications</p>
+            <ul className="space-y-2">
+              {data.certifications.map((c) => (
+                <li key={c} className="text-sm text-neutral-500">
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </section>
   );

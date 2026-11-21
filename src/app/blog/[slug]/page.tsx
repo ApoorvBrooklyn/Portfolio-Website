@@ -54,7 +54,7 @@ export default async function PostPage({ params }: Props) {
               {post.title}
             </h1>
             <div className="flex flex-wrap items-center gap-4 text-sm text-neutral-400">
-              <span className="font-mono">{formatDate(post.date)}</span>
+              <span className="italic">{formatDate(post.date)}</span>
               <span>{post.readingTime} min read</span>
               {post.tags.length > 0 && (
                 <div className="flex gap-2">

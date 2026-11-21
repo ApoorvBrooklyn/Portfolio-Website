@@ -11,8 +11,8 @@ interface Props {
 
 export function AdminShell({ children, title, back }: Props) {
   return (
-    <div className="min-h-screen bg-white">
-      <header className="border-b border-neutral-200 bg-white sticky top-0 z-10">
+    <div className="min-h-screen bg-paper">
+      <header className="border-b border-neutral-200 bg-paper sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 h-12 flex items-center justify-between">
           <div className="flex items-center gap-3">
             {back && (

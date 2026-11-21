@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, FC } from "react";
-import emailjs from "@emailjs/browser";
 
 const Contact: FC = () => {
   const [sent, setSent] = useState(false);
@@ -11,17 +10,26 @@ const Contact: FC = () => {
     e.preventDefault();
     setLoading(true);
     setError("");
+    const form = e.currentTarget;
+    const data = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+    };
     try {
-      await emailjs.sendForm(
-        "service_ucgutfg",
-        "template_esbcm5o",
-        e.currentTarget,
-        { publicKey: "r5Ku7DzQjzCGO0CEk" }
-      );
-      setSent(true);
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : (typeof err === "object" && err !== null && "text" in err ? String((err as { text: string }).text) : "Failed to send message. Please try again.");
-      setError(msg);
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const body = await res.json();
+      if (res.ok) {
+        setSent(true);
+      } else {
+        setError(body.error ?? "Failed to send message. Please try again.");
+      }
+    } catch {
+      setError("Failed to send message. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -39,7 +47,7 @@ const Contact: FC = () => {
           <div className="space-y-5">
             <div>
               <p className="text-neutral-700 leading-relaxed">
-                Open to research collaborations, internships, and interesting AI/ML projects.
+                Open to collaborations and interesting backend or AI systems work.
                 If you have something worth discussing, I&apos;d like to hear it.
               </p>
             </div>
@@ -107,7 +115,7 @@ const Contact: FC = () => {
                     type="email"
                     required
                     placeholder="you@example.com"
-                    className="w-full text-sm border border-neutral-200 rounded-md px-3 py-2 bg-white text-neutral-950 placeholder:text-neutral-300 focus:outline-none focus:border-neutral-400 transition-colors"
+                    className="w-full text-sm border border-neutral-200 rounded-md px-3 py-2 bg-neutral-0 text-neutral-950 placeholder:text-neutral-300 focus:outline-none focus:border-neutral-400 transition-colors"
                   />
                 </div>
                 <div>
@@ -119,7 +127,7 @@ const Contact: FC = () => {
                     type="text"
                     required
                     placeholder="Your name"
-                    className="w-full text-sm border border-neutral-200 rounded-md px-3 py-2 bg-white text-neutral-950 placeholder:text-neutral-300 focus:outline-none focus:border-neutral-400 transition-colors"
+                    className="w-full text-sm border border-neutral-200 rounded-md px-3 py-2 bg-neutral-0 text-neutral-950 placeholder:text-neutral-300 focus:outline-none focus:border-neutral-400 transition-colors"
                   />
                 </div>
                 <div>
@@ -131,7 +139,7 @@ const Contact: FC = () => {
                     required
                     rows={4}
                     placeholder="What's on your mind?"
-                    className="w-full text-sm border border-neutral-200 rounded-md px-3 py-2 bg-white text-neutral-950 placeholder:text-neutral-300 focus:outline-none focus:border-neutral-400 transition-colors resize-none"
+                    className="w-full text-sm border border-neutral-200 rounded-md px-3 py-2 bg-neutral-0 text-neutral-950 placeholder:text-neutral-300 focus:outline-none focus:border-neutral-400 transition-colors resize-none"
                   />
                 </div>
                 {error && (

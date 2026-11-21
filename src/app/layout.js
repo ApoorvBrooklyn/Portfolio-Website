@@ -1,26 +1,30 @@
-import { Inter } from "next/font/google";
+import { Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-serif",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 export const metadata = {
-  title: "Apoorv Sadhale — AI Engineer",
-  description: "AI Engineer. Building neural networks and ML systems.",
+  title: "Apoorv Sadhale — Backend Engineer",
+  description:
+    "Backend engineer at Ethos Life. Building production systems and AI-assisted underwriting workflows.",
   openGraph: {
     title: "Apoorv Sadhale",
-    description: "AI Engineer. Building neural networks and ML systems.",
+    description:
+      "Backend engineer at Ethos Life. Building production systems and AI-assisted underwriting workflows.",
     type: "website",
   },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={sourceSerif.variable}>
+      <body className={sourceSerif.className}>{children}</body>
     </html>
   );
 }

@@ -21,12 +21,12 @@ const Navbar: FC = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed top-0 z-50 w-full bg-white/90 backdrop-blur-sm border-b border-neutral-200">
+    <nav className="fixed top-0 z-50 w-full bg-paper/90 backdrop-blur-sm border-b border-paper-rule">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-14">
           <Link
             href="/"
-            className="text-sm font-semibold text-neutral-950 hover:text-neutral-500 transition-colors"
+            className="text-base font-semibold text-neutral-950 hover:text-neutral-500 transition-colors"
           >
             Apoorv
           </Link>
@@ -77,7 +77,7 @@ const Navbar: FC = () => {
 
       {/* Mobile menu */}
       {open && (
-        <div className="sm:hidden border-t border-neutral-200 bg-white">
+        <div className="sm:hidden border-t border-paper-rule bg-paper">
           <div className="max-w-3xl mx-auto px-4 py-3 space-y-1">
             {navLinks.map((link) =>
               link.external ? (
